@@ -94,9 +94,9 @@ cdef class Compute_Similarity_Cython:
 
         """
         """
-        Asymmetric Cosine as described in: 
+        Asymmetric Cosine as described in:
         Aiolli, F. (2013, October). Efficient top-n recommendation for very large scale binary rated datasets. In Proceedings of the 7th ACM conference on Recommender systems (pp. 273-280). ACM.
-        
+
         """
 
         super(Compute_Similarity_Cython, self).__init__()
@@ -328,18 +328,18 @@ cdef class Compute_Similarity_Cython:
         """
         For every item the cosine similarity against other items depends on whether they have users in common. The more
         common users the higher the similarity.
-        
+
         The basic implementation is:
         - Select the first item
         - Loop through all other items
         -- Given the two items, get the users they have in common
         -- Update the similarity for all common users
-        
+
         That is VERY slow due to the common user part, in which a long data structure is looped multiple times.
-        
+
         A better way is to use the data structure in a different way skipping the search part, getting directly the
         information we need.
-        
+
         The implementation here used is:
         - Select the first item
         - Initialize a zero valued array for the similarities
@@ -347,8 +347,8 @@ cdef class Compute_Similarity_Cython:
         - Loop through the users
         -- Given a user, get the items he rated (second item)
         -- Update the similarity of the items he rated
-        
-        
+
+
         """
 
         # Create template used to initialize an array with zeros

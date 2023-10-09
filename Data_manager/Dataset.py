@@ -22,7 +22,7 @@ def gini_index(array):
     """Calculate the Gini coefficient of a numpy array."""
     # based on bottom eq: http://www.statsdirect.com/help/content/image/stat0206_wmf.gif
     # from: http://www.statsdirect.com/help/default.htm#nonparametric_methods/gini.htm
-    array = np.array(array, dtype=np.float)
+    array = np.array(array, dtype=float)
     array = array.flatten() #all values are treated equally, arrays must be 1d
     if np.amin(array) < 0:
         array -= np.amin(array) #values cannot be negative
@@ -273,11 +273,11 @@ class Dataset(object):
               "\tInteraction density: {:.2E}\n"
               "\tInteractions per user:\n"
               "\t\t Min: {:.2E}\n"
-              "\t\t Avg: {:.2E}\n"    
-              "\t\t Max: {:.2E}\n"     
-              "\tInteractions per item:\n"    
+              "\t\t Avg: {:.2E}\n"
+              "\t\t Max: {:.2E}\n"
+              "\tInteractions per item:\n"
               "\t\t Min: {:.2E}\n"
-              "\t\t Avg: {:.2E}\n"    
+              "\t\t Avg: {:.2E}\n"
               "\t\t Max: {:.2E}\n"
               "\tGini Index: {:.2f}\n".format(
             self.__class__,
@@ -417,7 +417,7 @@ class Dataset(object):
 
         if items_to_remove is not None:
 
-            items_to_keep_mask = np.ones(n_items, dtype=np.bool)
+            items_to_keep_mask = np.ones(n_items, dtype=bool)
             items_to_keep_mask[items_to_remove] = False
 
             self.item_original_ID_to_index = reconcile_mapper_with_removed_tokens(self.item_original_ID_to_index, items_to_remove)
@@ -428,7 +428,7 @@ class Dataset(object):
 
             if self._HAS_ICM:
 
-                items_to_keep_mask = np.ones(n_items, dtype=np.bool)
+                items_to_keep_mask = np.ones(n_items, dtype=bool)
                 items_to_keep_mask[items_to_remove] = False
 
                 for ICM_name, ICM_object in self.AVAILABLE_ICM.items():
@@ -452,7 +452,7 @@ class Dataset(object):
 
         if users_to_remove is not None:
 
-            users_to_keep_mask = np.ones(n_users, dtype=np.bool)
+            users_to_keep_mask = np.ones(n_users, dtype=bool)
             users_to_keep_mask[users_to_remove] = False
 
             self.user_original_ID_to_index = reconcile_mapper_with_removed_tokens(self.user_original_ID_to_index, users_to_remove)
@@ -463,7 +463,7 @@ class Dataset(object):
 
             if self._HAS_UCM:
 
-                users_to_keep_mask = np.ones(n_users, dtype=np.bool)
+                users_to_keep_mask = np.ones(n_users, dtype=bool)
                 users_to_keep_mask[users_to_remove] = False
 
                 for UCM_name, UCM_object in self.AVAILABLE_UCM.items():

@@ -34,7 +34,7 @@ class CFM_wrapper(BaseRecommender, Incremental_Training_Early_Stopping, BaseTemp
         self._item_indices = np.arange(0, self.n_items, dtype=np.int32)
 
         self.cfm = None
-    
+
     def fit(self, pretrain_flag, pretrained_FM_folder_path, hidden_factor, num_field, epochs, batch_size,
             learning_rate, lamda_bilinear, keep, optimizer_type, batch_norm, verbose,
             regs, map_mode, attention_size, attentive_pooling, net_channel,
@@ -43,7 +43,7 @@ class CFM_wrapper(BaseRecommender, Incremental_Training_Early_Stopping, BaseTemp
             temp_file_folder = None, **earlystopping_kwargs):
 
         self.temp_file_folder = self._get_unique_temp_folder(input_temp_file_folder=temp_file_folder)
-        
+
         assert map_mode in self.__AVAILABLE_MAP_MODES, 'Invalid map mode!'
 
         self.cfm = CFM(
@@ -86,9 +86,9 @@ class CFM_wrapper(BaseRecommender, Incremental_Training_Early_Stopping, BaseTemp
     def _run_epoch(self, num_epoch):
         if self.cfm is None:
             raise ValueError('Model not correctly initialized!')
-        
+
         self.cfm._run_epoch(self.data.Train_data)
-    
+
     def _update_best_model(self):
         self.save_model(self.temp_file_folder, file_name="_best_model")
 
@@ -112,7 +112,7 @@ class CFM_wrapper(BaseRecommender, Incremental_Training_Early_Stopping, BaseTemp
 
             #user_features = self.data.Test_data['X_user'][user_id]
             user_features = self.data.user_map[user_id]
-            
+
             item_score_user = self.cfm.get_scores_per_user(user_features)
 
             if items_to_compute is not None:

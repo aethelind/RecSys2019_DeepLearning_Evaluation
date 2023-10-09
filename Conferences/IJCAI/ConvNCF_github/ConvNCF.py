@@ -62,7 +62,7 @@ def parse_args():
                         help='Learning rate for embeddings.')
     parser.add_argument('--lr_net', type=float, default=0.05,
                         help='Learning rate for CNN.')
-    parser.add_argument('--net_channel', nargs='?', default='[32,32,32,32,32,32]',	
+    parser.add_argument('--net_channel', nargs='?', default='[32,32,32,32,32,32]',
                         help='net_channel, should be 6 layers here')
     parser.add_argument('--pretrain', type=int, default=0,
                         help='Use the pretraining weights or not')
@@ -99,7 +99,7 @@ def shuffle(samples, batch_size, dataset, model):
     _user_input, _item_input_pos = samples
     _batch_size = batch_size
     # _index = range(len(_user_input))
-    _index = np.arange(0, len(_user_input), dtype = np.int)
+    _index = np.arange(0, len(_user_input), dtype = int)
     _model = model
     _dataset = dataset
     np.random.shuffle(_index)

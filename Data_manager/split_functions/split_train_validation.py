@@ -45,7 +45,7 @@ def split_train_validation_percentage_user_wise(URM_train, train_percentage = 0.
         if n_train_items == len(user_profile_items) and n_train_items > 1:
             n_train_items -= 1
 
-        indices_for_sampling = np.arange(0, user_profile_length, dtype=np.int)
+        indices_for_sampling = np.arange(0, user_profile_length, dtype=int)
         np.random.shuffle(indices_for_sampling)
 
         train_items = user_profile_items[indices_for_sampling[0:n_train_items]]
@@ -105,7 +105,7 @@ def split_train_validation_leave_one_out_user_wise(URM_train, verbose=True, at_l
         if n_train_items > at_least_n_train_items:
             n_train_items -= 1
 
-        indices_for_sampling = np.arange(0, user_profile_length, dtype=np.int)
+        indices_for_sampling = np.arange(0, user_profile_length, dtype=int)
         np.random.shuffle(indices_for_sampling)
 
         train_items = user_profile_items[indices_for_sampling[0:n_train_items]]
@@ -159,7 +159,7 @@ def split_data_train_validation_test_negative_user_wise(URM_all, negative_items_
 
     URM_negative_builder = IncrementalSparseMatrix(n_rows=n_rows, n_cols=n_cols)
 
-    all_items = np.arange(0, n_cols, dtype=np.int)
+    all_items = np.arange(0, n_cols, dtype=int)
 
     for user_index in range(URM_train_all.shape[0]):
 
@@ -223,7 +223,7 @@ def split_train_validation_test_negative_leave_one_out_user_wise(URM_all, negati
 
     URM_negative_builder = IncrementalSparseMatrix(n_rows=n_rows, n_cols=n_cols)
 
-    all_items = np.arange(0, n_cols, dtype=np.int)
+    all_items = np.arange(0, n_cols, dtype=int)
 
     for user_index in range(URM_train_all.shape[0]):
 
@@ -347,7 +347,7 @@ def split_train_validation_cold_start_user_wise(URM_train, full_train_percentage
         if n_train_items == len(user_profile_items) and n_train_items > 1:
             n_train_items -= 1
 
-        indices_for_sampling = np.arange(0, user_profile_length, dtype=np.int)
+        indices_for_sampling = np.arange(0, user_profile_length, dtype=int)
         np.random.shuffle(indices_for_sampling)
 
         train_items = user_profile_items[indices_for_sampling[0:n_train_items]]

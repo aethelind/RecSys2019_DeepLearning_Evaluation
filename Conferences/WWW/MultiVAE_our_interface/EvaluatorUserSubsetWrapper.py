@@ -67,7 +67,7 @@ class MF_cold_user_wrapper(BaseMatrixFactorizationRecommender):
 
         self._cold_user_KNN_model_flag = False
         self._cold_user_KNN_estimated_factors_flag = False
-        self._warm_user_KNN_mask = np.zeros(len(self._get_cold_user_mask()), dtype=np.bool)
+        self._warm_user_KNN_mask = np.zeros(len(self._get_cold_user_mask()), dtype=bool)
 
 
     def _compute_item_score(self, user_id_array, items_to_compute = None):

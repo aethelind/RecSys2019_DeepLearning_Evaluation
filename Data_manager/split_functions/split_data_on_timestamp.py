@@ -26,7 +26,7 @@ def split_data_on_timestamp(URM_all, URM_timestamp, negative_items_per_positive=
     URM_validation_builder = IncrementalSparseMatrix(n_rows=n_rows, n_cols=n_cols)
     URM_negative_builder = IncrementalSparseMatrix(n_rows=n_rows, n_cols=n_cols)
 
-    all_items = np.arange(0, n_cols, dtype=np.int)
+    all_items = np.arange(0, n_cols, dtype=int)
 
 
     for user_index in range(URM_all.shape[0]):

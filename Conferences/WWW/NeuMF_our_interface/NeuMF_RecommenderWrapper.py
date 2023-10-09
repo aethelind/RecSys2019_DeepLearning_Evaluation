@@ -206,7 +206,7 @@ class NeuMF_RecommenderWrapper(BaseRecommender, Incremental_Training_Early_Stopp
         self._train = sps.dok_matrix(self.URM_train)
         self.n_users, self.n_items = self.URM_train.shape
 
-        self._item_indices = np.arange(0, self.n_items, dtype=np.int)
+        self._item_indices = np.arange(0, self.n_items, dtype=int)
         self._user_ones_vector = np.ones_like(self._item_indices)
 
 
@@ -400,9 +400,9 @@ class NeuMF_RecommenderWrapper(BaseRecommender, Incremental_Training_Early_Stopp
         user_input, item_input, labels = get_train_instances(self._train, self.num_negatives, self.n_items)
 
         # Training
-        hist = self.model.fit([np.array(user_input).astype(np.int32),
-                               np.array(item_input).astype(np.int32)], #input
-                         np.array(labels).astype(np.int32), # labels
+        hist = self.model.fit([np.array(user_input).astype(int32),
+                               np.array(item_input).astype(int32)], #input
+                         np.array(labels).astype(int32), # labels
                          batch_size=self.batch_size, epochs=1, verbose=0, shuffle=True)
 
         print("NeuMF_RecommenderWrapper: Epoch {}, loss {:.2E}".format(currentEpoch+1, hist.history['loss'][0]))

@@ -67,7 +67,7 @@ class FM_Wrapper(BaseRecommender, Incremental_Training_Early_Stopping, BaseTempF
         self._item_indices = np.arange(0, self.n_items, dtype=np.int32)
 
         self.fm = None
-        
+
     def fit(self, pretrain_flag, hidden_factor, epochs, batch_size, learning_rate, lamda_bilinear,
             keep, optimizer_type, batch_norm, verbose, permutation=None, random_seed=2016,
             temp_file_folder = None, **earlystopping_kwargs):
@@ -110,7 +110,7 @@ class FM_Wrapper(BaseRecommender, Incremental_Training_Early_Stopping, BaseTempF
             raise ValueError('Model not correctly initialized!')
 
         self.fm._run_epoch(self.data.Train_data)
-    
+
     def _update_best_model(self):
         self.save_model(self.temp_file_folder, file_name="_best_model")
 
@@ -134,7 +134,7 @@ class FM_Wrapper(BaseRecommender, Incremental_Training_Early_Stopping, BaseTempF
 
             #user_features = self.data.Test_data['X_user'][user_id]
             user_features = self.data.user_map[user_id]
-            
+
             item_score_user = self.fm.get_scores_per_user(user_features)
 
             if items_to_compute is not None:
@@ -173,7 +173,7 @@ class FM_Wrapper(BaseRecommender, Incremental_Training_Early_Stopping, BaseTempF
         dataIO.save_data(file_name=file_name, data_dict_to_save=data_dict_to_save)
 
         self._print("Saving complete")
-    
+
     def load_model(self, folder_path, file_name=None):
         if file_name is None:
             file_name = self.RECOMMENDER_NAME

@@ -48,12 +48,12 @@ class MyTestCase(unittest.TestCase):
         shannon_entropy.recommended_counter[0] = 1.0
         assert np.isclose(0.0, shannon_entropy.get_metric_value(), atol=1e-3), "metric incorrect"
 
-        shannon_entropy.recommended_counter = np.random.uniform(0, 100, n_items).astype(np.int)
+        shannon_entropy.recommended_counter = np.random.uniform(0, 100, n_items).astype(int)
         assert  np.isclose(9.6, shannon_entropy.get_metric_value(), atol=1e-1), "metric incorrect"
 
         # n_items = 10000
         #
-        # shannon_entropy.recommended_counter = np.random.normal(0, 50, n_items).astype(np.int)
+        # shannon_entropy.recommended_counter = np.random.normal(0, 50, n_items).astype(int)
         # shannon_entropy.recommended_counter += abs(min(shannon_entropy.recommended_counter))
         # assert  np.isclose(9.8, shannon_entropy.get_metric_value(), atol=1e-1), "metric incorrect"
 
@@ -74,7 +74,7 @@ class MyTestCase(unittest.TestCase):
         URM_predicted_col = []
 
         diversity_list = Diversity_MeanInterList(n_items, cutoff)
-        item_id_list = np.arange(0, n_items, dtype=np.int)
+        item_id_list = np.arange(0, n_items, dtype=int)
 
         for n_user in range(n_users):
 
@@ -90,7 +90,7 @@ class MyTestCase(unittest.TestCase):
 
         URM_predicted_data = np.ones_like(URM_predicted_row)
 
-        URM_predicted_sparse = sps.csr_matrix((URM_predicted_data, (URM_predicted_row, URM_predicted_col)), dtype=np.int)
+        URM_predicted_sparse = sps.csr_matrix((URM_predicted_data, (URM_predicted_row, URM_predicted_col)), dtype=int)
 
         co_counts = URM_predicted_sparse.dot(URM_predicted_sparse.T).toarray()
         np.fill_diagonal(co_counts, 0)
@@ -123,7 +123,7 @@ class MyTestCase(unittest.TestCase):
         URM_predicted_col = []
 
         diversity_list = Diversity_MeanInterList(n_items, cutoff)
-        item_id_list = np.arange(0, n_items, dtype=np.int)
+        item_id_list = np.arange(0, n_items, dtype=int)
 
         for n_user in range(n_users):
 
@@ -139,7 +139,7 @@ class MyTestCase(unittest.TestCase):
 
         URM_predicted_data = np.ones_like(URM_predicted_row)
 
-        URM_predicted_sparse = sps.csr_matrix((URM_predicted_data, (URM_predicted_row, URM_predicted_col)), dtype=np.int)
+        URM_predicted_sparse = sps.csr_matrix((URM_predicted_data, (URM_predicted_row, URM_predicted_col)), dtype=int)
 
         co_counts = URM_predicted_sparse.dot(URM_predicted_sparse.T).toarray()
         np.fill_diagonal(co_counts, 0)

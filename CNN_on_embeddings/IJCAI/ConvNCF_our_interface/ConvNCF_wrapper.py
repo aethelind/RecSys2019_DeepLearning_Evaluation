@@ -71,7 +71,7 @@ class ArgsInterface:
 class ConvNCF_RecommenderWrapper(BaseRecommender, Incremental_Training_Early_Stopping, BaseTempFolder):
 
     RECOMMENDER_NAME = "ConvNCF_Wrapper"
-    
+
     __AVAILABLE_MAP_MODES = ["all_map", "main_diagonal", "off_diagonal"]
 
 
@@ -160,10 +160,10 @@ class ConvNCF_RecommenderWrapper(BaseRecommender, Incremental_Training_Early_Sto
             temp_file_folder = None,
             **earlystopping_kwargs
             ):
-        
-        
+
+
         assert map_mode in self.__AVAILABLE_MAP_MODES, "{}: map mode not recognized, available values are {}".format(self.RECOMMENDER_NAME, self.__AVAILABLE_MAP_MODES)
-        
+
 
         self.temp_file_folder = self._get_unique_temp_folder(input_temp_file_folder=temp_file_folder)
 

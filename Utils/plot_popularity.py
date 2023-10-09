@@ -42,7 +42,7 @@ def plot_popularity_bias(URM_object_list, URM_name_list, output_img_path, sort_o
     plt.ylabel("Normalized number of interactions per item")
     #plt.title("Item popularity distribution for different URM splits")
 
-    x_tick = np.arange(0,n_items, dtype=np.int)
+    x_tick = np.arange(0,n_items, dtype=int)
 
     item_sorted_indices = None
 
@@ -120,7 +120,7 @@ def gini(array):
     """Calculate the Gini coefficient of a numpy array."""
     # based on bottom eq: http://www.statsdirect.com/help/content/image/stat0206_wmf.gif
     # from: http://www.statsdirect.com/help/default.htm#nonparametric_methods/gini.htm
-    array = np.array(array, dtype=np.float)
+    array = np.array(array, dtype=float)
     array = array.flatten() #all values are treated equally, arrays must be 1d
     if np.amin(array) < 0:
         array -= np.amin(array) #values cannot be negative

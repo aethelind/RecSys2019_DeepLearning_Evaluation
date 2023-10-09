@@ -194,7 +194,7 @@ class Evaluator(object):
         # Prune users with an insufficient number of ratings
         # During testing CSR is faster
         self.URM_test_list = []
-        users_to_evaluate_mask = np.zeros(self.n_users, dtype=np.bool)
+        users_to_evaluate_mask = np.zeros(self.n_users, dtype=bool)
 
         for URM_test in URM_test_list:
 
@@ -495,7 +495,7 @@ class EvaluatorNegativeItemSample(Evaluator):
                                                           ignore_items = ignore_items, ignore_users = ignore_users)
 
 
-        self.URM_items_to_rank = sps.csr_matrix(self.URM_test.copy().astype(np.bool)) + sps.csr_matrix(URM_test_negative.copy().astype(np.bool))
+        self.URM_items_to_rank = sps.csr_matrix(self.URM_test.copy().astype(bool)) + sps.csr_matrix(URM_test_negative.copy().astype(bool))
         self.URM_items_to_rank.eliminate_zeros()
         self.URM_items_to_rank.data = np.ones_like(self.URM_items_to_rank.data)
 

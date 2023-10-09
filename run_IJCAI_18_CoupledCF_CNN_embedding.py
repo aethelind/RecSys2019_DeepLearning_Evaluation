@@ -154,7 +154,7 @@ def get_URM_negatives_without_cold_users(removed_cold_users, URM_test_negative):
     if removed_cold_users is None:
         return URM_test_negative.copy()
 
-    users_to_preserve_mask = np.ones(URM_test_negative.shape[0], dtype=np.bool)
+    users_to_preserve_mask = np.ones(URM_test_negative.shape[0], dtype=bool)
     users_to_preserve_mask[removed_cold_users] = False
     URM_test_negative_fold = URM_test_negative[users_to_preserve_mask,:]
 
@@ -268,7 +268,7 @@ if __name__ == '__main__':
 
             evaluator_validation = EvaluatorNegativeItemSample(URM_validation, URM_test_negative_fold, cutoff_list=cutoff_list_validation)
             evaluator_test = EvaluatorNegativeItemSample(URM_test, URM_test_negative_fold, cutoff_list=cutoff_list_test)
-            
+
             recommender_input_args = SearchInputRecommenderArgs(CONSTRUCTOR_POSITIONAL_ARGS=[URM_train, UCM_CoupledCF, ICM_CoupledCF])
 
 

@@ -25,7 +25,7 @@ def json_not_serializable_handler(o):
     if isinstance(o, np.integer):
         return int(o)
 
-    if isinstance(o, np.bool_):
+    if isinstance(o, bool_):
         return bool(o)
 
     raise TypeError("json_not_serializable_handler: object '{}' is not serializable.".format(type(o)))

@@ -534,9 +534,9 @@ cdef matrix_element_tree_s * pointer_new_matrix_element_tree_s(long column, doub
 cdef int compare_struct_on_column(const void *a_input, const void *b_input):
     """
     The function compares the column contained in the two struct passed.
-    If a.column > b.column returns >0  
-    If a.column < b.column returns <0      
-    
+    If a.column > b.column returns >0
+    If a.column < b.column returns <0
+
     :return int: a.column - b.column
     """
 
@@ -550,9 +550,9 @@ cdef int compare_struct_on_column(const void *a_input, const void *b_input):
 cdef int compare_struct_on_data(const void * a_input, const void * b_input):
     """
     The function compares the data contained in the two struct passed.
-    If a.data > b.data returns >0  
-    If a.data < b.data returns <0      
-    
+    If a.data > b.data returns >0
+    If a.data < b.data returns <0
+
     :return int: +1 or -1
     """
 
@@ -618,8 +618,8 @@ cdef class Sparse_Matrix_Tree_CSR:
 
     cdef double add_value(self, long row, long col, double value):
         """
-        The function adds a value to the specified cell. A new cell is created if necessary.         
-        
+        The function adds a value to the specified cell. A new cell is created if necessary.
+
         :param row: cell coordinates
         :param col:  cell coordinates
         :param value: value to add
@@ -684,8 +684,8 @@ cdef class Sparse_Matrix_Tree_CSR:
 
     cdef double get_value(self, long row, long col):
         """
-        The function returns the value of the specified cell.         
-        
+        The function returns the value of the specified cell.
+
         :param row: cell coordinates
         :param col:  cell coordinates
         :return double: cell value
@@ -736,8 +736,8 @@ cdef class Sparse_Matrix_Tree_CSR:
 
     cdef get_scipy_csr(self, long TopK = False):
         """
-        The function returns the current sparse matrix as a scipy_csr object         
-   
+        The function returns the current sparse matrix as a scipy_csr object
+
         :return double: scipy_csr object
         """
         cdef int terminate
@@ -782,7 +782,7 @@ cdef class Sparse_Matrix_Tree_CSR:
     cdef rebalance_tree(self, long TopK = False):
         """
         The function builds a balanced binary tree from the current one, for all matrix rows
-        
+
         :param TopK: either False or an integer number. Number of the highest elements to preserve
         """
 
@@ -804,10 +804,10 @@ cdef class Sparse_Matrix_Tree_CSR:
 
     cdef matrix_element_tree_s * subtree_to_list_flat(self, matrix_element_tree_s * root):
         """
-        The function flatten the structure of the subtree whose root is passed as a parameter    
+        The function flatten the structure of the subtree whose root is passed as a parameter
         The list is bidirectional and ordered with respect to the column
         The column ordering follows from the insertion policy
-        
+
         :param root: tree root
         :return list, list: data and corresponding column. Empty list if root is None
         """
@@ -865,8 +865,8 @@ cdef class Sparse_Matrix_Tree_CSR:
 
     cdef subtree_free_memory(self, matrix_element_tree_s* root):
         """
-        The function frees all struct in the subtree whose root is passed as a parameter, root included 
-        
+        The function frees all struct in the subtree whose root is passed as a parameter, root included
+
         :param root: tree root
         """
 
@@ -882,8 +882,8 @@ cdef class Sparse_Matrix_Tree_CSR:
 
     cdef list_free_memory(self, matrix_element_tree_s * head):
         """
-        The function frees all struct in the list whose head is passed as a parameter, head included 
-        
+        The function frees all struct in the list whose head is passed as a parameter, head included
+
         :param head: list head
         """
 
@@ -898,12 +898,12 @@ cdef class Sparse_Matrix_Tree_CSR:
 
     cdef matrix_element_tree_s* build_tree_from_list_flat(self, matrix_element_tree_s* flat_list_head):
         """
-        The function builds a tree containing the passed data. This is the recursive function, the 
+        The function builds a tree containing the passed data. This is the recursive function, the
         data should be sorted by te caller
-        To ensure the tree is balanced, data is sorted according to the column   
-        
+        To ensure the tree is balanced, data is sorted according to the column
+
         :param row: row in which to create new tree
-        :param column_vector: column coordinates 
+        :param column_vector: column coordinates
         :param data_vector: cell data
         """
 
@@ -953,8 +953,8 @@ cdef class Sparse_Matrix_Tree_CSR:
 
     cdef matrix_element_tree_s* topK_selection_from_list(self, matrix_element_tree_s* head, long TopK):
         """
-        The function selects the topK highest elements in the given list 
-        
+        The function selects the topK highest elements in the given list
+
         :param head: head of the list
         :param TopK: number of highest elements to preserve
         :return matrix_element_tree_s*: head of the new list
@@ -1045,7 +1045,7 @@ cdef class Sparse_Matrix_Tree_CSR:
     cpdef test_list_tee_conversion(self, long row):
         """
         The function tests the inner data structure conversion from tree to C linked list and back to tree
-        
+
         :param row: row to use for testing
         """
 
@@ -1134,7 +1134,7 @@ cdef class Sparse_Matrix_Tree_CSR:
     cpdef test_topK_from_list_selection(self, long row, long topK):
         """
         The function tests the topK selection from list
-        
+
         :param row: row to use for testing
         """
 
@@ -1271,8 +1271,8 @@ cdef class Triangular_Matrix:
 
     cdef double add_value(self, long row, long col, double value):
         """
-        The function adds a value to the specified cell. A new cell is created if necessary.         
-        
+        The function adds a value to the specified cell. A new cell is created if necessary.
+
         :param row: cell coordinates
         :param col:  cell coordinates
         :param value: value to add
@@ -1305,8 +1305,8 @@ cdef class Triangular_Matrix:
 
     cdef double get_value(self, long row, long col):
         """
-        The function returns the value of the specified cell.         
-        
+        The function returns the value of the specified cell.
+
         :param row: cell coordinates
         :param col:  cell coordinates
         :return double: cell value
@@ -1334,8 +1334,8 @@ cdef class Triangular_Matrix:
 
     cdef get_scipy_csr(self, long TopK = False):
         """
-        The function returns the current sparse matrix as a scipy_csr object         
-   
+        The function returns the current sparse matrix as a scipy_csr object
+
         :return double: scipy_csr object
         """
         cdef int terminate

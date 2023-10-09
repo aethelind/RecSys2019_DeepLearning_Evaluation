@@ -60,8 +60,8 @@ class _DELF_RecommenderWrapper(BaseRecommender, Incremental_Training_Early_Stopp
             users = np.full(n_items, u_i, dtype='int32')
 
 
-            predictions = self.sess.run(self.model.predict, feed_dict={self.input_user: np.expand_dims(users, axis=1).astype(np.int32),
-                                                                       self.input_item: np.expand_dims(item_indices, axis=1).astype(np.int32),
+            predictions = self.sess.run(self.model.predict, feed_dict={self.input_user: np.expand_dims(users, axis=1).astype(int32),
+                                                                       self.input_item: np.expand_dims(item_indices, axis=1).astype(int32),
                                                                        self.rating_matrix: self.train_arr})
             # predictions = np.array(predictions).reshape((-1))
             # scores = np.ones(self.n_items) * (-np.inf)

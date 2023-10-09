@@ -34,7 +34,7 @@ class Data(object):
         self.R = np.zeros((self.n_users, self.n_items), dtype=np.float32)
 
         self._users_with_interactions = np.ediff1d(URM_train.indptr)>=1
-        self._users_with_interactions = np.arange(self.n_users, dtype=np.int64)[self._users_with_interactions]
+        self._users_with_interactions = np.arange(self.n_users, dtype=int64)[self._users_with_interactions]
         self._users_with_interactions = list(self._users_with_interactions)
 
         self.train_items, self.test_set = {}, {}
@@ -99,7 +99,7 @@ class SpectralCF_RecommenderWrapper(BaseRecommender, Incremental_Training_Early_
     def _compute_item_score(self, user_id_array, items_to_compute=None):
 
         if len(user_id_array) < self.batch_size:
-            user_batch = np.zeros((self.batch_size), dtype=np.int64)
+            user_batch = np.zeros((self.batch_size), dtype=int64)
             user_batch[0:len(user_id_array)] = user_id_array
 
         else:
